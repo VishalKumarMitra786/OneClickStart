@@ -27,7 +27,7 @@ namespace OneClickStart
 
         private void StartBtn_Click(object sender, RoutedEventArgs e)
         {
-
+         
         }
     }
 }
