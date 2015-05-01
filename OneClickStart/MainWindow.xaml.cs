@@ -37,7 +37,7 @@ namespace OneClickStart
             var isTextFileExist = File.Exists(file);
             try
             {
-
+                
                 if (isTextFileExist)
                 {
                     string[] lines = File.ReadAllLines(file);
