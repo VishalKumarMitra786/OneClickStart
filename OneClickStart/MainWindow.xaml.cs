@@ -71,5 +71,12 @@ namespace OneClickStart
             }
             
         }
+
+        private void StartBtn_OnMouseEnter(object sender, MouseEventArgs e)
+        {
+            var brush = new ImageBrush();
+            brush.ImageSource=new BitmapImage(new Uri("Images/start.png",UriKind.Relative));
+            StartBtn.Background = brush;
+        }
     }
 }

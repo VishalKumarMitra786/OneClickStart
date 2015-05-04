@@ -2,8 +2,41 @@
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="MainWindow" Height="350" Width="525" AllowsTransparency="True" WindowStyle="None" Background="Transparent" WindowState="Maximized">
+ <Window.Resources>
+        <Style x:Key="MyButtonStyle" TargetType="Button">
+            <Setter Property="OverridesDefaultStyle" Value="True"/>
+            <Setter Property="Margin" Value="5"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Name="border" 
+                            BorderThickness="1"
+                            Padding="4,2" 
+                            BorderBrush="Transparent" 
+                            CornerRadius="3" 
+                            Background="{TemplateBinding Background}">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="border" Property="BorderBrush" Value="Transparent" />
+                                <Setter Property="Background" Value="#80FF0000"></Setter>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
     <Grid>
+        <Grid.Background>
+            <ImageBrush/>
+        </Grid.Background>
         <Label Content="OneClickStart" HorizontalAlignment="Center" Margin="0,300,0,0" FontSize="16" FontWeight="Bold"></Label>
-        <Button Name="StartBtn" HorizontalAlignment="Center" VerticalAlignment="Center" Click="StartBtn_Click" Content="Start" FontSize="16" FontWeight="Bold" Height="100" Width="150" ></Button>
+        <Button  Style="{StaticResource MyButtonStyle}" Name="StartBtn"  MouseEnter="StartBtn_OnMouseEnter" HorizontalAlignment="Center" VerticalAlignment="Center" Click="StartBtn_Click"  FontSize="16" FontWeight="Bold" Height="100" Width="100" BorderBrush="#80FF0000" Foreground="{DynamicResource {x:Static SystemColors.InactiveBorderBrushKey}}" >
+            <Button.Background>
+                <ImageBrush ImageSource="Images/start.png"></ImageBrush>
+            </Button.Background>
+        </Button>
     </Grid>
 </Window>
